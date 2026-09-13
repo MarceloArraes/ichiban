@@ -1,0 +1,31 @@
+---
+import { Image } from 'astro:assets';
+import teamImg from '../assets/images/whole-team.jpeg';
+---
+
+<section class="section section--dark" id="team">
+  <div class="container team__grid">
+    <div class="team__media">
+      <Image
+        src={teamImg}
+        alt="The Ichiban Cladding work crew"
+        width={900}
+        height={1200}
+        sizes="(min-width: 860px) 50vw, 100vw"
+      />
+    </div>
+
+    <div class="team__copy">
+      <span class="kicker">Our team</span>
+      <h2>The crew behind the walls</h2>
+      <p class="lead">
+        A tight, experienced team that works together every day. When you hire Ichiban, you
+        get the same people on your site from set-out to handover — a crew that takes pride
+        in getting it right.
+      </p>
+      <div style="margin-top: 28px;">
+        <a class="btn btn--primary" href="#contact">Join our next project</a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,81 @@
+---
+import { Image } from 'astro:assets';
+
+const modules = import.meta.glob('../assets/images/work-*.jpeg', {
+  eager: true,
+  import: 'default',
+}) as Record<string, ImageMetadata>;
+
+const thumbWidth = 560;
+
+const items = Object.values(modules).map((img, i) => ({
+  img,
+  width: thumbWidth,
+  height: Math.round((thumbWidth * img.height) / img.width),
+  full: img.src,
+  alt: `Ichiban Cladding project — photo ${i + 1}`,
+}));
+---
+
+<section class="section" id="work">
+  <div class="container">
+    <div class="section-head">
+      <span class="kicker">Our work</span>
+      <h2>Recent sites &amp; jobs</h2>
+      <p class="lead">
+        A selection of our latest Hebel cladding projects and the crew at work across
+        South Australian builds.
+      </p>
+    </div>
+
+    <div class="gallery__grid">
+      {
+        items.map((item) => (
+          <button class="gallery__item" data-full={item.full} data-alt={item.alt} type="button">
+            <Image src={item.img} alt={item.alt} width={item.width} height={item.height} loading="lazy" quality={78} />
+          </button>
+        ))
+      }
+    </div>
+  </div>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox__close" id="lightboxClose" aria-label="Close">&times;</button>
+    <img id="lightboxImg" src="" alt="" />
+  </div>
+</section>
+
+<script>
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg') as HTMLImageElement;
+  const closeBtn = document.getElementById('lightboxClose');
+
+  function open(src: string, alt: string) {
+    lightboxImg.src = src;
+    lightboxImg.alt = alt;
+    lightbox?.classList.add('is-open');
+    lightbox?.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function close() {
+    lightbox?.classList.remove('is-open');
+    lightbox?.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    lightboxImg.src = '';
+  }
+
+  document.querySelectorAll<HTMLButtonElement>('.gallery__item').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      open(btn.dataset.full ?? '', btn.dataset.alt ?? '');
+    });
+  });
+
+  closeBtn?.addEventListener('click', close);
+  lightbox?.addEventListener('click', (e) => {
+    if (e.target === lightbox) close();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') close();
+  });
+</script>

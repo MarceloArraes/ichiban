@@ -1,0 +1,52 @@
+---
+import { Image } from 'astro:assets';
+import aboutImg from '../assets/images/work-01.jpeg';
+import { site } from '../data/site';
+---
+
+<section class="section" id="about">
+  <div class="container about__grid">
+    <div class="about__copy">
+      <span class="kicker">About us</span>
+      <h2>Local crew. Number one standard.</h2>
+      <p class="lead">
+        Ichiban (一番) means &ldquo;number one&rdquo; in Japanese — and that&rsquo;s the standard we
+        hold every job to. We&rsquo;re a South Australian cladding crew specialising in Hebel
+        installation for house constructions, extensions and commercial projects.
+      </p>
+      <ul class="about__points">
+        <li>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          Specialists in Hebel AAC panel systems — it&rsquo;s what we do every day.
+        </li>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          Proudly local to {site.serviceArea}, working with builders and homeowners.
+        </li>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          Clean, straight, code-compliant work that passes inspection first time.
+        </li>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          Registered Australian company — ABN {site.abn}.
+        </li>
+      </ul>
+      <a class="btn btn--dark" href="#contact">Work with us</a>
+    </div>
+
+    <div class="about__media">
+      <Image
+        src={aboutImg}
+        alt="Ichiban Cladding crew installing Hebel panels on site"
+        width={900}
+        height={1200}
+        sizes="(min-width: 860px) 50vw, 100vw"
+      />
+      <div class="about__media-card">
+        <strong>一番</strong>
+        <span>&ldquo;Ichiban&rdquo; — number one in Japanese.</span>
+      </div>
+    </div>
+  </div>
+</section>

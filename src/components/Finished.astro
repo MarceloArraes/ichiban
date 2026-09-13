@@ -1,0 +1,34 @@
+---
+import { Image } from 'astro:assets';
+import finished1 from '../assets/images/finished-1.jpeg';
+import finished2 from '../assets/images/finished-2.jpeg';
+
+const projects = [
+  { img: finished1, label: 'Finished façade', alt: 'Completed Hebel cladding façade by Ichiban Cladding' },
+  { img: finished2, label: 'Completed build', alt: 'Completed house with Hebel cladding by Ichiban Cladding' },
+];
+---
+
+<section class="section" id="finished">
+  <div class="container">
+    <div class="section-head">
+      <span class="kicker">Finished projects</span>
+      <h2>The result speaks for itself</h2>
+      <p class="lead">
+        Straight lines, crisp corners and a finish that&rsquo;s ready for paint — that&rsquo;s the
+        Ichiban standard on every wall we hand over.
+      </p>
+    </div>
+
+    <div class="finished__grid">
+      {
+        projects.map((project) => (
+          <figure class="finished__card">
+            <Image src={project.img} alt={project.alt} width={1280} height={800} sizes="(min-width: 760px) 50vw, 100vw" quality={82} />
+            <figcaption class="finished__label">{project.label}</figcaption>
+          </figure>
+        ))
+      }
+    </div>
+  </div>
+</section>
