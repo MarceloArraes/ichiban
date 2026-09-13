@@ -204,8 +204,8 @@ a {
 }
 
 .brand__logo {
-  width: 96px;
-  height: 96px;
+  width: 132px;
+  height: 100px;
   border-radius: 8px;
   object-fit: cover;
 }
@@ -773,6 +773,13 @@ a {
 .contact-form textarea {
   min-height: 130px;
   resize: vertical;
+}
+
+.form-status {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  min-height: 1.5em;
 }
 
 @media (max-width: 860px) {
