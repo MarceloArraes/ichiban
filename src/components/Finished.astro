@@ -1,12 +1,44 @@
 ---
 import { Image } from 'astro:assets';
-import finished1 from '../assets/images/finished-1.jpeg';
-import finished2 from '../assets/images/finished-2.jpeg';
+import front from '../assets/images/finished/front.jpeg';
+import frontSecondStorey from '../assets/images/finished/front-second-storey.jpeg';
+import lateral from '../assets/images/finished/lateral.jpeg';
+import build1 from '../assets/images/finished/build-1.jpeg';
+import build2 from '../assets/images/finished/build-2.jpeg';
+
+const featured = {
+  img: front,
+  label: 'Front façade — completed',
+  alt: 'Completed two-storey home with a smooth white Hebel cladding façade',
+};
 
 const projects = [
-  { img: finished1, label: 'Finished façade', alt: 'Completed Hebel cladding façade by Ichiban Cladding' },
-  { img: finished2, label: 'Completed build', alt: 'Completed house with Hebel cladding by Ichiban Cladding' },
+  {
+    img: frontSecondStorey,
+    label: 'Second-storey elevation',
+    alt: 'Completed upper storey with Hebel cladding and contrasting dark feature panels',
+  },
+  {
+    img: lateral,
+    label: 'Side entry',
+    alt: 'Side entry and rear walkway finished in white Hebel cladding',
+  },
+  {
+    img: build1,
+    label: 'Finished build',
+    alt: 'Completed two-storey home with Hebel cladding, timber battens and metal roofing',
+  },
+  {
+    img: build2,
+    label: 'Completed façade',
+    alt: 'Street view of a completed two-storey home with Hebel cladding and timber battens',
+  },
 ];
+
+const sized = (img: typeof front, width: number) => ({
+  width,
+  height: Math.round((width * img.height) / img.width),
+});
 ---
 
 <section class="section" id="finished">
@@ -21,10 +53,28 @@ const projects = [
     </div>
 
     <div class="finished__grid">
+      <figure class="finished__card finished__card--featured">
+        <Image
+          src={featured.img}
+          alt={featured.alt}
+          {...sized(featured.img, 1600)}
+          sizes="100vw"
+          quality={82}
+        />
+        <figcaption class="finished__label">{featured.label}</figcaption>
+      </figure>
+
       {
         projects.map((project) => (
           <figure class="finished__card">
-            <Image src={project.img} alt={project.alt} width={1280} height={800} sizes="(min-width: 760px) 50vw, 100vw" quality={82} />
+            <Image
+              src={project.img}
+              alt={project.alt}
+              {...sized(project.img, 1280)}
+              sizes="(min-width: 760px) 50vw, 100vw"
+              loading="lazy"
+              quality={82}
+            />
             <figcaption class="finished__label">{project.label}</figcaption>
           </figure>
         ))
