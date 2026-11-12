@@ -1,7 +1,6 @@
 import type { ImageMetadata } from 'astro';
 import attachingPanels from '../assets/images/work/attaching-panels.jpeg';
 import betweenPanels from '../assets/images/work/between-panels.jpeg';
-import cuttingPanels from '../assets/images/work/cutting-panels.jpeg';
 import cuttingTopHat from '../assets/images/work/cutting-top-hat.jpeg';
 import panelsOverWindow from '../assets/images/work/panels-over-window.jpeg';
 import poolsideWall from '../assets/images/work/poolside-wall.jpeg';
@@ -18,11 +17,6 @@ export type WorkPhoto = {
 };
 
 export const workPhotos: WorkPhoto[] = [
-  {
-    src: cuttingPanels,
-    caption: 'Cutting panels to size',
-    alt: 'Ichiban Cladding worker in orange hi-vis cutting a Hebel panel with a circular saw',
-  },
   {
     src: cuttingTopHat,
     caption: 'Cutting top-hat battens',
